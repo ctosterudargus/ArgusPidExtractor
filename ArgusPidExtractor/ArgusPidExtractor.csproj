@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Platforms>x64</Platforms>
+		<PlatformTarget>x64</PlatformTarget>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Reference Include="accoremgd">
+	    <HintPath>..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2025\accoremgd.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="Acdbmgd">
+	    <HintPath>..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2025\acdbmgd.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	  <Reference Include="Acmgd">
+	    <HintPath>..\..\..\..\..\..\Program Files\Autodesk\AutoCAD 2025\acmgd.dll</HintPath>
+	    <Private>False</Private>
+	  </Reference>
+	</ItemGroup>
+	<Target Name="CopyToDeploy" AfterTargets="Build">
+		<PropertyGroup>
+			<_SolutionDir Condition="'$(SolutionDir)' == ''">$(MSBuildThisFileDirectory)..\</_SolutionDir>
+			<DeployDir>$(_SolutionDir)tools\deploy\</DeployDir>
+		</PropertyGroup>
+		<MakeDir Directories="$(DeployDir)" />
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(DeployDir)" OverwriteReadOnlyFiles="true" />
+	</Target>
+
+
+</Project>

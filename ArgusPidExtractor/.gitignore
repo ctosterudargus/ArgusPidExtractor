@@ -1,0 +1,21 @@
+# VS / build
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*/bin/
+*/obj/
+*.cache
+*.log
+
+# AutoCAD extractor outputs
+tools/deploy/
+out/
+
+# Local test drawings (keep repo clean)
+test/dwgs/
+
+# OS
+Thumbs.db
+.DS_Store
